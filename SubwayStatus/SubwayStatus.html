@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="d3.js"></script> 
+    <script>
+    function draw(data) {
+        "use strict";
+        d3.select("body")
+          .append("ul")
+          .selectAll("li") /* this creates an empty selection - array with no elements */
+          .data(data) /* method of the empty array - effectivly makes the array as big as the data set */
+          .enter() /* selects only those elements that have a data point but dont already exist on the screen */
+          .append("li")
+            .text(function (d) {
+                return d.name + ": " + d.status;
+            });
+        d3.selectAll("li")
+            .style("font-weight", function (d) {
+                if (d.status == "GOOD SERVICE"){
+                    return "normal";
+                } else {
+                    return "bold";
+                }
+            })
+    }
+    </script>
+</head>
+<body>
+    <script>
+        d3.json("data/service_status.json", draw)
+    </script>
+</body>
+</html>
