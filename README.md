@@ -1,4 +1,4 @@
 D3
 ==
 
-freezing-octo-dangerzone
+This is a collection of D3 examples, fragments, and works in progress.
